@@ -196,10 +196,10 @@ export const products: Product[] = [
 ];
 
 export const categories = [
-  { name: 'Furniture', icon: '🛋️', count: 245 },
-  { name: 'Rugs', icon: '🏠', count: 89 },
-  { name: 'Lighting', icon: '💡', count: 156 },
-  { name: 'Decor', icon: '🖼️', count: 423 },
-  { name: 'Art', icon: '🎨', count: 78 },
-  { name: 'Appliances', icon: '⚡', count: 134 }
+  { name: 'Furniture', count: 245 },
+  { name: 'Rugs', count: 89 },
+  { name: 'Lighting', count: 156 },
+  { name: 'Decor', count: 423 },
+  { name: 'Art', count: 78 },
+  { name: 'Appliances', count: 134 }
 ];

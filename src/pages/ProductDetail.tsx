@@ -54,6 +54,15 @@ const ProductDetail = () => {
     }
   };
 
+  const formatMWK = (amount: number) => {
+    return new Intl.NumberFormat('en-MW', {
+      style: 'currency',
+      currency: 'MWK',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount * 1000);
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -167,17 +176,17 @@ const ProductDetail = () => {
               {product.salePrice ? (
                 <>
                   <span className="text-3xl font-bold text-primary">
-                    ${product.salePrice}
+                    {formatMWK(product.salePrice)}
                   </span>
                   <span className="text-xl text-muted-foreground line-through">
-                    ${product.price}
+                    {formatMWK(product.price)}
                   </span>
                   <Badge variant="destructive">
-                    Save ${(product.price - product.salePrice).toFixed(0)}
+                    Save {formatMWK(product.price - product.salePrice)}
                   </Badge>
                 </>
               ) : (
-                <span className="text-3xl font-bold">${product.price}</span>
+                <span className="text-3xl font-bold">{formatMWK(product.price)}</span>
               )}
             </div>
 

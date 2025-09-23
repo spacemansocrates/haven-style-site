@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Truck, Shield, Sparkles } from 'lucide-react';
+import { ArrowRight, Truck, Shield, Sparkles, Sofa, Home, Lightbulb, Frame, Palette, Zap } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/product/ProductCard';
@@ -72,19 +72,23 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Shop by Category</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {categories.map((category) => (
-              <Link
-                key={category.name}
-                to={`/products?category=${category.name}`}
-                className="group"
-              >
-                <div className="bg-card rounded-lg p-6 text-center transition-all duration-300 hover:shadow-md hover:scale-105">
-                  <div className="text-4xl mb-3">{category.icon}</div>
-                  <h3 className="font-medium">{category.name}</h3>
-                  <p className="text-sm text-muted-foreground">{category.count} items</p>
-                </div>
-              </Link>
-            ))}
+            {categories.map((category, index) => {
+              const icons = [Sofa, Home, Lightbulb, Frame, Palette, Zap];
+              const Icon = icons[index];
+              return (
+                <Link
+                  key={category.name}
+                  to={`/products?category=${category.name}`}
+                  className="group"
+                >
+                  <div className="bg-card rounded-lg p-6 text-center transition-all duration-300 hover:shadow-md hover:scale-105">
+                    <Icon className="h-8 w-8 mx-auto mb-3 text-primary" />
+                    <h3 className="font-medium">{category.name}</h3>
+                    <p className="text-sm text-muted-foreground">{category.count} items</p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

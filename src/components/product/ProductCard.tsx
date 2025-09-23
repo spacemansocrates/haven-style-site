@@ -30,6 +30,15 @@ const ProductCard = ({ product }: ProductCardProps) => {
     }
   };
 
+  const formatMWK = (amount: number) => {
+    return new Intl.NumberFormat('en-MW', {
+      style: 'currency',
+      currency: 'MWK',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount * 1000);
+  };
+
   return (
     <Link to={`/product/${product.id}`}>
       <div className="group relative bg-card rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg">
@@ -101,14 +110,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
             {product.salePrice ? (
               <>
                 <span className="text-lg font-semibold text-primary">
-                  ${product.salePrice}
+                  {formatMWK(product.salePrice)}
                 </span>
                 <span className="text-sm text-muted-foreground line-through">
-                  ${product.price}
+                  {formatMWK(product.price)}
                 </span>
               </>
             ) : (
-              <span className="text-lg font-semibold">${product.price}</span>
+              <span className="text-lg font-semibold">{formatMWK(product.price)}</span>
             )}
           </div>
         </div>
